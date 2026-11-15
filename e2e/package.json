@@ -1,0 +1,13 @@
+{
+  "name": "mailbox-e2e",
+  "private": true,
+  "description": "Test-only Playwright suite for the Dioxus Web build. Not part of the app runtime.",
+  "scripts": {
+    "test": "playwright test --workers=1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@types/node": "22.10.2",
+    "typescript": "5.7.2"
+  }
+}

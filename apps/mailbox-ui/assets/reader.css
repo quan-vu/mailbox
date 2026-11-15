@@ -1,0 +1,12 @@
+/* Message body in real mode (MB-130, MB-131). Tokens only; no new colours. */
+.mail-body { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.body-loading { display: flex; flex-direction: column; gap: 10px; padding: 6px 0; max-width: 560px; }
+.mail-body > .alert { align-items: center; }
+.mail-body > .alert .btn { flex: none; }
+.body-view-switch { display: flex; justify-content: flex-end; }
+/* Mail HTML lives in its own sandboxed document; it always renders on white, like paper. */
+.mail-frame { display: block; width: 100%; height: min(70vh, 640px); min-height: 240px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+@media (max-width: 767px) {
+  .mail-frame { height: 60vh; }
+  .mail-body > .alert { flex-wrap: wrap; }
+}

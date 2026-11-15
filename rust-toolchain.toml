@@ -1,0 +1,6 @@
+# Pinned so a new compiler release cannot break the build with warnings nobody has seen.
+# Keep the same version in .github/workflows/ci.yml. Raise both together after a local pass.
+[toolchain]
+channel = "1.100.0"
+components = ["rustfmt", "clippy"]
+targets = ["wasm32-unknown-unknown"]

@@ -1,0 +1,27 @@
+/* Live sync status (MB-141). Uses the token palette only. */
+.live-chip { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; background: var(--soft); color: var(--ink); }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; display: inline-block; background: var(--muted); }
+.live-ok .live-dot { background: var(--success); }
+.live-busy .live-dot { background: var(--blue); }
+.live-warn .live-dot { background: var(--warn); }
+.live-danger .live-dot { background: var(--danger); }
+.live-chip.live-warn { background: var(--warn-bg); }
+.live-chip.live-danger { background: var(--danger-bg); color: var(--danger); }
+
+.account-live { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; padding: 0 12px 8px 30px; font-size: 12px; color: var(--muted); }
+.account-live .live-dot { margin-top: 1px; }
+.account-live-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; flex: 1; }
+.account-live-text small { font-size: 11px; }
+.account-live.live-danger .account-live-text > span:first-child { color: var(--danger); }
+.account-live .live-partial { color: var(--warn); }
+.account-live .live-action { height: 28px; padding: 0 10px; font-size: 12px; }
+.live-row .account-live { padding: 4px 0 0; }
+.live-list { display: flex; flex-direction: column; gap: 4px; }
+
+/* Icon rail: only the dot stays visible. */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .account-live.compact { padding: 0 0 6px; justify-content: center; }
+  .account-live.compact .account-live-text, .account-live.compact .live-action { display: none; }
+  .sidebar.open .account-live.compact { padding: 0 12px 8px 30px; justify-content: flex-start; }
+  .sidebar.open .account-live.compact .account-live-text, .sidebar.open .account-live.compact .live-action { display: flex; }
+}

@@ -1,0 +1,17 @@
+[package]
+name = "mailbox-autoconfig"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Mail server autoconfiguration from an email domain: provider table, DNS SRV (RFC 6186), Thunderbird autoconfig XML over HTTPS, verified guesses. SSRF-safe by construction."
+
+[dependencies]
+mailbox-core = { path = "../mailbox-core" }
+
+# Network parts exist on native targets only; the pure types and the policy compile everywhere.
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+mailbox-net = { path = "../mailbox-net" }
+tokio = { version = "1", features = ["net", "io-util", "time"] }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt", "io-util", "net", "time"] }

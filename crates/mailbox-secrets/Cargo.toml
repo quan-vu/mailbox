@@ -1,0 +1,10 @@
+[package]
+name = "mailbox-secrets"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Secret stores for MailBox: OS keychain on Desktop. Native targets only; never part of the Web bundle."
+
+[dependencies]
+mailbox-core = { path = "../mailbox-core" }
+keyring = { version = "3", features = ["apple-native", "windows-native", "sync-secret-service"] }

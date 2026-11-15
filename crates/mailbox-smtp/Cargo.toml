@@ -1,0 +1,17 @@
+[package]
+name = "mailbox-smtp"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "SMTP submission check and minimal sender over mandatory verified TLS. Native targets only."
+
+[dependencies]
+mailbox-core = { path = "../mailbox-core" }
+mailbox-net = { path = "../mailbox-net" }
+tokio = { version = "1", features = ["io-util"] }
+
+[dev-dependencies]
+# Only for the opt-in real-provider test (tests/real_send.rs).
+mailbox-compose = { path = "../mailbox-compose" }
+mailbox-imap = { path = "../mailbox-imap" }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "io-util", "net", "time"] }

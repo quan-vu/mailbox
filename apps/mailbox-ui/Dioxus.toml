@@ -1,0 +1,18 @@
+[application]
+name = "MailBox"
+default_platform = "web"
+
+[web.app]
+title = "MailBox — Unified Email"
+
+[web.resource]
+style = []
+script = []
+
+[web.resource.dev]
+style = []
+script = []
+
+[bundle]
+identifier = "app.mailbox.client"
+publisher = "MailBox Contributors"

@@ -1,0 +1,14 @@
+/* Real-mode folders and message action states (MB-122/143/132/144). Uses tokens.css only. */
+.row-op { position: absolute; right: 52px; bottom: 18px; display: inline-flex; align-items: center; gap: 4px; height: 22px; padding: 0 8px; border-radius: var(--radius-pill); font-size: 11px; font-weight: 600; white-space: nowrap; }
+.row-op-pending { background: var(--soft); color: var(--blue); }
+.row-op-failed { background: var(--warn-bg); color: var(--warn); }
+.row-op-dismiss { border: 0; background: transparent; color: inherit; width: 22px; height: 22px; margin-right: -6px; display: grid; place-items: center; border-radius: 50%; cursor: pointer; }
+.row-op-dismiss:hover, .row-op-dismiss:focus-visible { background: var(--card); }
+.row[data-op="pending"] .subject, .row[data-op="pending"] .sender { opacity: .75; }
+.move-menu { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 8px; border-radius: 8px; color: var(--ink); }
+.move-menu:hover, .move-menu:focus-within { background: var(--soft); }
+.move-menu select { border: 0; background: transparent; color: inherit; font: inherit; height: 32px; max-width: 170px; outline: 0; cursor: pointer; }
+@media (max-width: 767px) {
+  .row-op { right: 48px; bottom: 14px; }
+  .move-menu select { max-width: 120px; }
+}

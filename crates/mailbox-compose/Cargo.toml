@@ -1,0 +1,8 @@
+[package]
+name = "mailbox-compose"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Address validation and RFC 5322/MIME message building. Pure Rust, no I/O: compiles for Web and Desktop."
+
+[dependencies]

@@ -1,0 +1,15 @@
+[package]
+name = "mailbox-imap"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "IMAP connection check with mandatory certificate validation. Native targets only."
+
+[dependencies]
+mailbox-core = { path = "../mailbox-core" }
+mailbox-net = { path = "../mailbox-net" }
+# time/sync/macros: IDLE timer and the live sync worker (MB-140).
+tokio = { version = "1", features = ["io-util", "time", "sync", "macros", "rt"] }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "io-util", "net", "time", "test-util"] }

@@ -1,0 +1,64 @@
+/* MailBox design tokens v0.2 — source: docs/03-ui/DESIGN_SYSTEM.md (approved Gate G1, 2026-11-14).
+   Never add primary colours outside this file. Account colours are data (fixtures), not tokens. */
+:root {
+  --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius-pill: 999px;
+  --radius-input: 10px;
+  --radius-btn: 12px;
+  --radius-card: 14px;
+  --focus: #9ac1ff;
+  --topbar-h: 72px;
+  --sidebar-w: 264px;
+  --rail-w: 76px;
+}
+
+.app-shell {
+  --blue: #2672f6;
+  --blue-strong: #1f63db;
+  --on-blue: #ffffff;
+  --bg: #f8faff;
+  --surface: #ffffff;
+  --card: #f9fbff;
+  --ink: #172137;
+  /* Darkened from #67758B so 11-12px labels reach 4.5:1 on --bg (Gate G1 note). */
+  --muted: #5f6d84;
+  --line: #e6ebf3;
+  --soft: #e8f0ff;
+  --soft-line: #bfd5ff;
+  --success: #1e7f45;
+  --success-bg: #e6f6ec;
+  --warn: #8a5a12;
+  --warn-bg: #fff4df;
+  --danger: #b42d25;
+  --danger-bg: #fdecea;
+  --purple: #6d3fd1;
+  --purple-bg: #f1eaff;
+  --star: #e8a317;
+  --scrim: rgba(23, 33, 55, 0.4);
+  --shadow: 0 10px 30px rgba(23, 33, 55, 0.12);
+}
+
+.app-shell[data-theme="dark"] {
+  --blue: #4e91fa;
+  --blue-strong: #6aa3fb;
+  --on-blue: #0b1220;
+  --bg: #101827;
+  --surface: #182335;
+  --card: #1b2a42;
+  --ink: #ecf2fd;
+  --muted: #aab7ce;
+  --line: #2c3b52;
+  --soft: #223b61;
+  --soft-line: #34588f;
+  --success: #5fd08a;
+  --success-bg: #17352a;
+  --warn: #f2c26b;
+  --warn-bg: #3a2e16;
+  --danger: #ff8a80;
+  --danger-bg: #3a1e1e;
+  --purple: #c4a8ff;
+  --purple-bg: #2d2350;
+  --star: #f5b82e;
+  --scrim: rgba(0, 0, 0, 0.55);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}

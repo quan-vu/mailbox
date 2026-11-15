@@ -1,0 +1,15 @@
+[package]
+name = "mailbox-net"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Verified-TLS transport shared by the IMAP and SMTP connectors. Native targets only."
+
+[dependencies]
+mailbox-core = { path = "../mailbox-core" }
+tokio = { version = "1", features = ["net", "io-util", "time"] }
+tokio-rustls = { version = "0.26", default-features = false, features = ["ring", "tls12"] }
+webpki-roots = "1"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt", "net", "io-util", "time"] }

@@ -1,0 +1,21 @@
+[package]
+name = "mailbox-store"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "SQLite (Desktop) and PostgreSQL (Web) implementations of the mailbox-core storage port."
+
+[dependencies]
+mailbox-core = { path = "../mailbox-core" }
+serde_json.workspace = true
+sqlx = { version = "0.8", default-features = false, features = ["runtime-tokio", "sqlite", "postgres", "migrate", "macros"] }
+
+[dev-dependencies]
+# Only the opt-in real-provider thread test (tests/real_threads.rs) builds a reply with threading headers.
+mailbox-compose = { path = "../mailbox-compose" }
+mailbox-imap = { path = "../mailbox-imap" }
+mailbox-mime = { path = "../mailbox-mime" }
+# Only the opt-in real-provider test (tests/real_actions.rs) sends a message, to the test mailbox itself.
+mailbox-smtp = { path = "../mailbox-smtp" }
+# test-util + sync: the live worker test runs on a paused clock (MB-140).
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time", "test-util", "sync"] }

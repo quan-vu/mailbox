@@ -1,0 +1,29 @@
+[workspace]
+resolver = "2"
+members = [
+  "apps/mailbox-ui",
+  "apps/mailbox-api",
+  "crates/mailbox-contracts",
+  "crates/mailbox-core",
+  "crates/mailbox-store",
+  "crates/mailbox-secrets",
+  "crates/mailbox-imap",
+  "crates/mailbox-net",
+  "crates/mailbox-smtp",
+  "crates/mailbox-mime",
+  "crates/mailbox-compose",
+  "crates/mailbox-autoconfig",
+]
+default-members = ["crates/mailbox-contracts", "crates/mailbox-core", "crates/mailbox-store", "crates/mailbox-secrets", "crates/mailbox-imap", "crates/mailbox-net", "crates/mailbox-smtp", "crates/mailbox-mime", "crates/mailbox-compose", "crates/mailbox-autoconfig", "apps/mailbox-api"]
+
+[workspace.package]
+version = "1.0.1"
+edition = "2024"
+license = "Apache-2.0"
+rust-version = "1.88"
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+tracing = "0.1"

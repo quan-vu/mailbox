@@ -1,0 +1,37 @@
+/* Composer send states and the drafts/outbox list (MB-133, MB-150, MB-151).
+   Uses the tokens from tokens.css only; state is always carried by text and an icon as well. */
+.compose-form { border: 0; padding: 0; margin: 0; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.compose-form:disabled { opacity: 0.72; }
+.attach-picker { cursor: pointer; position: relative; }
+.attach-picker:focus-within { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.send-state { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: var(--radius-card); border: 1px solid var(--line); background: var(--card); font-size: 13px; line-height: 1.55; }
+.send-state strong { display: block; font-size: 14px; }
+.send-state p { margin: 4px 0 0; }
+.send-sending { background: var(--soft); border-color: var(--soft-line); }
+.send-sending .icon { color: var(--blue); }
+.send-sent { background: var(--success-bg); color: var(--success); border-color: transparent; }
+.send-failed { background: var(--danger-bg); color: var(--danger); border-color: transparent; }
+.send-unknown { background: var(--warn-bg); color: var(--warn); border-color: transparent; }
+.send-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.rejected-list { margin: 8px 0 0; padding-left: 18px; font-weight: 600; }
+.check-result { font-weight: 600; }
+
+.outbox { flex: 1; min-width: 0; overflow-y: auto; padding: 18px 24px; display: flex; flex-direction: column; gap: 12px; background: var(--surface); }
+.outbox-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.outbox-head h1 { font-size: 20px; margin: 0; }
+.outbox-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.outbox-item { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--card); }
+.outbox-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.outbox-text strong, .outbox-text small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.outbox-badge { flex: none; background: var(--card); color: var(--muted); border: 1px solid var(--line); }
+.outbox-badge.state-sending { background: var(--soft); color: var(--blue); border-color: transparent; }
+.outbox-badge.state-sent { background: var(--success-bg); color: var(--success); border-color: transparent; }
+.outbox-badge.state-failed { background: var(--danger-bg); color: var(--danger); border-color: transparent; }
+.outbox-badge.state-unknown { background: var(--warn-bg); color: var(--warn); border-color: transparent; }
+
+@media (max-width: 767px) {
+  .outbox { padding: 12px; }
+  .outbox-item { flex-wrap: wrap; }
+  .send-state { flex-direction: column; }
+}

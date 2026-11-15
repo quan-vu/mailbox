@@ -1,0 +1,55 @@
+name: Windows release build
+# Cost policy: macOS and Linux are built and verified on the local machine
+# (see docs/05-engineering/QUALITY_GATES.md). GitHub Actions is used for the Windows release
+# build only. It never starts by itself: someone starts it by hand and names the version tag
+# to build. Pushing a commit, a tag or a pull request starts nothing.
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Version tag to build, for example v1.0.1"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  windows-desktop:
+    runs-on: windows-latest
+    steps:
+      - name: Check the tag name
+        shell: bash
+        env:
+          TAG: ${{ inputs.tag }}
+        run: |
+          if ! [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([-.][0-9A-Za-z.]+)?$ ]]; then
+            echo "Not a version tag: expected something like v1.0.1" >&2
+            exit 1
+          fi
+      - uses: actions/checkout@v4
+        with:
+          ref: refs/tags/${{ inputs.tag }}
+          persist-credentials: false
+      # The version is pinned here and in rust-toolchain.toml (keep both the same), so a new
+      # compiler release cannot fail the build with warnings nobody has seen locally.
+      - uses: dtolnay/rust-toolchain@1.100.0
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - name: Core and API tests
+        run: cargo test --workspace --exclude mailbox-ui --locked
+      - name: Renderer-independent UI tests (dioxus-ssr)
+        run: cargo test -p mailbox-ui --locked
+      - name: UI lint (desktop feature)
+        run: cargo clippy -p mailbox-ui --no-default-features --features desktop --locked -- -D warnings
+      - name: Install Dioxus CLI
+        run: cargo install dioxus-cli --version 0.7.10 --locked
+      - name: Bundle Windows desktop app
+        working-directory: apps/mailbox-ui
+        run: dx bundle -p mailbox-ui --desktop --release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mailbox-windows-${{ inputs.tag }}
+          path: target/dx/mailbox-ui/bundle/windows/**
+          if-no-files-found: error

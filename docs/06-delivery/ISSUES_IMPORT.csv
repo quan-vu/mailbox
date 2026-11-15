@@ -1,0 +1,153 @@
+Title,Body,Labels
+"MB-001: Init Cargo workspace, contracts, core, demo API, UI","Task ID: MB-001
+Depends on: none
+Acceptance: Files in repo; compile pending MB-101
+Specs: docs/06-delivery/TRACKING.md","phase:P0,status:authored-/-not-verified"
+MB-002: Docs + five UI reference PNGs,"Task ID: MB-002
+Depends on: none
+Acceptance: Docs index and PNGs present
+Specs: docs/06-delivery/TRACKING.md","phase:P0,status:authored"
+MB-101: Compile/run Web + Desktop; pin Cargo.lock,"Task ID: MB-101
+Depends on: MB-001
+Acceptance: Cargo check + dx serve logs for both
+Specs: docs/06-delivery/TRACKING.md","phase:P0,status:not-started"
+"MB-102: Refactor components/styles, responsive real one-pane mobile, icon library","Task ID: MB-102
+Depends on: MB-101
+Acceptance: Screenshot diff + a11y test for 5 screens
+Specs: docs/06-delivery/TRACKING.md","phase:P0,status:not-started"
+MB-103: UI data adapter: fixture/web HTTPS/native core,"Task ID: MB-103
+Depends on: MB-101
+Acceptance: UI web reads API fixture; desktop reads native fixture; tests
+Specs: docs/06-delivery/TRACKING.md","phase:P0,status:not-started"
+MB-104: Dioxus router stable deep links and navigation history,"Task ID: MB-104
+Depends on: MB-102
+Acceptance: `/inbox`, `/compose`, `/settings` reload tests
+Specs: docs/06-delivery/TRACKING.md","phase:P0,status:not-started"
+MB-105: Add localization infrastructure VI/EN,"Task ID: MB-105
+Depends on: MB-102
+Acceptance: Runtime locale switch and snapshot tests
+Specs: docs/06-delivery/TRACKING.md","phase:P0,status:not-started"
+"MB-110: Web authentication, session, CSRF, authorization guards","Task ID: MB-110
+Depends on: MB-103
+Acceptance: Unauthorized requests 401, owner tests
+Specs: docs/06-delivery/TRACKING.md","phase:P1,status:not-started"
+"MB-111: IMAP connect, TLS, auth error states","Task ID: MB-111
+Depends on: MB-113
+Acceptance: Real test provider connects with verified certificate
+Specs: docs/06-delivery/TRACKING.md","phase:P1,status:not-started"
+MB-112: SMTP capability/identity test,"Task ID: MB-112
+Depends on: MB-113
+Acceptance: Auth/TLS tests, no send without intent
+Specs: docs/06-delivery/TRACKING.md","phase:P1,status:not-started"
+MB-113: Desktop OS keychain + Web AEAD vault,"Task ID: MB-113
+Depends on: MB-110
+Acceptance: No plaintext secret in data/log; rotation test
+Specs: docs/06-delivery/TRACKING.md","phase:P1,status:not-started"
+MB-120: SQLite/Postgres repositories and migration harness,"Task ID: MB-120
+Depends on: MB-103
+Acceptance: Both dialects same contract tests
+Specs: docs/06-delivery/TRACKING.md","phase:P1,status:not-started"
+"MB-121: Folder discovery, UIDVALIDITY cursor persistence","Task ID: MB-121
+Depends on: MB-111, MB-120
+Acceptance: Restart and epoch-change tests
+Specs: docs/06-delivery/TRACKING.md","phase:P1,status:not-started"
+MB-122: Provider capability mapping and SPECIAL-USE,"Task ID: MB-122
+Depends on: MB-121
+Acceptance: Dovecot + alternate provider tests
+Specs: docs/06-delivery/TRACKING.md","phase:P1,status:not-started"
+"MB-130: Pagination, body fetch, MIME parser","Task ID: MB-130
+Depends on: MB-121
+Acceptance: Unicode/multipart/huge MIME corpus tests
+Specs: docs/06-delivery/TRACKING.md","phase:P2,status:not-started"
+"MB-131: Secure HTML preview, attachment handling","Task ID: MB-131
+Depends on: MB-130
+Acceptance: XSS isolation, remote image, path traversal tests
+Specs: docs/06-delivery/TRACKING.md","phase:P2,status:not-started"
+MB-132: Read/unread/star and folder mutations,"Task ID: MB-132
+Depends on: MB-121
+Acceptance: Cross-client state reconciliation tests
+Specs: docs/06-delivery/TRACKING.md","phase:P2,status:not-started"
+MB-133: Local draft schema/repository,"Task ID: MB-133
+Depends on: MB-120
+Acceptance: Survives restart, proper owner scoping
+Specs: docs/06-delivery/TRACKING.md","phase:P2,status:not-started"
+"MB-140: Sync worker IDLE/poll, retry, conflict handling","Task ID: MB-140
+Depends on: MB-121, MB-130
+Acceptance: Fault injection with disconnects, UID change
+Specs: docs/06-delivery/TRACKING.md","phase:P2,status:not-started"
+MB-141: Status UI: partial error/offline/reconnect,"Task ID: MB-141
+Depends on: MB-140
+Acceptance: Per-account status under outage
+Specs: docs/06-delivery/TRACKING.md","phase:P2,status:not-started"
+MB-143: Sent/Drafts special folder mapping,"Task ID: MB-143
+Depends on: MB-122
+Acceptance: Provider-specific mapping tests
+Specs: docs/06-delivery/TRACKING.md","phase:P2,status:not-started"
+MB-144: Archive/trash/move/expunge,"Task ID: MB-144
+Depends on: MB-132, MB-122
+Acceptance: Remote folder operations test
+Specs: docs/06-delivery/TRACKING.md","phase:P2,status:not-started"
+"MB-150: Composer, drafts, identity and MIME build","Task ID: MB-150
+Depends on: MB-133, MB-112, MB-131
+Acceptance: Sender account correct, BCC private, offline draft
+Specs: docs/06-delivery/TRACKING.md","phase:P2,status:not-started"
+MB-151: SMTP submission state + Sent reconciliation,"Task ID: MB-151
+Depends on: MB-150, MB-143
+Acceptance: Post-DATA disconnect unknown; no blind retry
+Specs: docs/06-delivery/TRACKING.md","phase:P2,status:not-started"
+MB-200: Scalable unified inbox + scoped search,"Task ID: MB-200
+Depends on: MB-140
+Acceptance: Pagination across providers, performance tests
+Specs: docs/06-delivery/TRACKING.md","phase:P3,status:not-started"
+MB-201: Threading from Message-ID/References,"Task ID: MB-201
+Depends on: MB-130
+Acceptance: No unrelated thread merging
+Specs: docs/06-delivery/TRACKING.md","phase:P3,status:not-started"
+MB-202: Provider autoconfig with SSRF-safe discovery,"Task ID: MB-202
+Depends on: MB-111
+Acceptance: DNS rebinding, fallback manual tests
+Specs: docs/06-delivery/TRACKING.md","phase:P3,status:not-started"
+MB-203: OAuth2 major providers,"Task ID: MB-203
+Depends on: MB-113, MB-202
+Acceptance: PKCE, token refresh/revocation tests
+Specs: docs/06-delivery/TRACKING.md","phase:P3,status:not-started"
+"MB-210: Templates, signatures, shortcuts","Task ID: MB-210
+Depends on: MB-150
+Acceptance: VI/EN and keyboard test
+Specs: docs/06-delivery/TRACKING.md","phase:P3,status:not-started"
+MB-211: Desktop OS notifications,"Task ID: MB-211
+Depends on: MB-141
+Acceptance: No content displayed without opt-in
+Specs: docs/06-delivery/TRACKING.md","phase:P3,status:not-started"
+MB-218: Scheduled send,"Task ID: MB-218
+Depends on: MB-151
+Acceptance: Restart, cancel, timezone tests
+Specs: docs/06-delivery/TRACKING.md","phase:P3,status:not-started"
+MB-221: Full i18n coverage,"Task ID: MB-221
+Depends on: MB-105
+Acceptance: All labels extracted and translated
+Specs: docs/06-delivery/TRACKING.md","phase:P3,status:not-started"
+MB-300: Web hardened deployment / SSRF audit,"Task ID: MB-300
+Depends on: MB-110, MB-202
+Acceptance: Pen test / threat model closed
+Specs: docs/06-delivery/TRACKING.md","phase:P4,status:not-started"
+"MB-301: Backups, restores, migrations","Task ID: MB-301
+Depends on: MB-120, MB-113
+Acceptance: Recovery drill documented
+Specs: docs/06-delivery/TRACKING.md","phase:P4,status:not-started"
+"MB-302: Desktop signing, update, sandbox config","Task ID: MB-302
+Depends on: MB-101, MB-211
+Acceptance: Signed installers macOS/Win/Linux
+Specs: docs/06-delivery/TRACKING.md","phase:P4,status:not-started"
+MB-303: E2E CI 3 providers + OS targets,"Task ID: MB-303
+Depends on: MB-151
+Acceptance: Green automated matrix
+Specs: docs/06-delivery/TRACKING.md","phase:P4,status:not-started"
+MB-304: Security/PII/fuzz/load review,"Task ID: MB-304
+Depends on: MB-303, MB-300
+Acceptance: No critical findings + issue log
+Specs: docs/06-delivery/TRACKING.md","phase:P4,status:not-started"
+MB-305: v1.0 tagged release & migration notes,"Task ID: MB-305
+Depends on: MB-304
+Acceptance: Release artifacts and complete ops docs
+Specs: docs/06-delivery/TRACKING.md","phase:P4,status:not-started"

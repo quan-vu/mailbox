@@ -1,0 +1,15 @@
+/* Track F: settings persistence, templates, shortcuts help, OAuth mock, autoconfig, density. */
+.sig-block { display: flex; flex-direction: column; gap: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.template-editor { display: flex; flex-direction: column; gap: 10px; padding: 12px; border: 1px solid var(--line); border-radius: 12px; }
+.template-editor .row-actions { display: flex; gap: 8px; justify-content: flex-end; }
+[data-density="compact"] .row-wrap .row-main { padding-top: 4px; padding-bottom: 4px; }
+[data-density="compact"] .row-wrap { --row-pad: 4px; }
+.shortcut-help-backdrop { position: fixed; inset: 0; z-index: 60; background: rgba(15, 23, 42, .45); display: flex; align-items: center; justify-content: center; padding: 16px; }
+.shortcut-help { width: min(520px, 100%); max-height: 86vh; overflow-y: auto; }
+.shortcut-help h3 { font-size: 13px; margin: 12px 0 4px; color: var(--muted); }
+.oauth-mock-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.oauth-btn.chosen { border-color: var(--blue); }
+.oauth-mock-panel p { margin: 0 0 6px; }
+.autoconfig { align-items: flex-start; margin: 8px 0; }
+.autoconfig-row { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; margin-bottom: 4px; }
+.autoconfig-row .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }

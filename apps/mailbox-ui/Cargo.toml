@@ -1,0 +1,48 @@
+[package]
+name = "mailbox-ui"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+dioxus = { version = "0.7.10", features = ["router"] }
+mailbox-contracts = { path = "../../crates/mailbox-contracts" }
+mailbox-core = { path = "../../crates/mailbox-core" }
+# Pure address/MIME logic; shared by Web and Desktop.
+mailbox-compose = { path = "../../crates/mailbox-compose" }
+# Provider table and autoconfig result types; the network part is native-only inside the crate.
+mailbox-autoconfig = { path = "../../crates/mailbox-autoconfig" }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+# Real IMAP connection check, Desktop only. Never compiled into the Web bundle.
+mailbox-imap = { path = "../../crates/mailbox-imap" }
+mailbox-mime = { path = "../../crates/mailbox-mime" }
+mailbox-smtp = { path = "../../crates/mailbox-smtp" }
+mailbox-store = { path = "../../crates/mailbox-store" }
+mailbox-secrets = { path = "../../crates/mailbox-secrets" }
+# OS notifications for new mail (MB-211), Desktop only. Pinned; see docs/05-engineering/DEPENDENCIES.md.
+notify-rust = "=4.19.0"
+# Opens a link from mail after the user confirmed it (AUDIT S-09). Same version dioxus-desktop
+# already uses; no new crate in the lock file.
+webbrowser = "=1.2.7"
+# Autosave debounce, attachment reads off the UI thread, and one gate serialising pending mail actions (Desktop only).
+tokio = { version = "1", features = ["rt", "time", "sync"] }
+
+[target.'cfg(unix)'.dependencies]
+# Local time-zone offset for scheduled send (MB-218, `adapters/clock.rs`); already in the lock file.
+libc = "0.2"
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+# Browser HTTP client for the Web data source only; never compiled into the Desktop build.
+gloo-net = { version = "0.6", default-features = false, features = ["http", "json"] }
+
+[features]
+default = []
+web = ["dioxus/web"]
+desktop = ["dioxus/desktop"]
+
+[dev-dependencies]
+dioxus-ssr = "0.7.10"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
+tokio = { version = "1", features = ["rt", "macros"] }

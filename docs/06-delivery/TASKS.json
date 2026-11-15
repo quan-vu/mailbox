@@ -1,0 +1,393 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-14",
+  "tasks": [
+    {
+      "id": "MB-001",
+      "phase": "P0",
+      "title": "Init Cargo workspace, contracts, core, demo API, UI",
+      "depends_on": [],
+      "status": "AUTHORED / NOT VERIFIED",
+      "acceptance": "Files in repo; compile pending MB-101"
+    },
+    {
+      "id": "MB-002",
+      "phase": "P0",
+      "title": "Docs + five UI reference PNGs",
+      "depends_on": [],
+      "status": "AUTHORED",
+      "acceptance": "Docs index and PNGs present"
+    },
+    {
+      "id": "MB-101",
+      "phase": "P0",
+      "title": "Compile/run Web + Desktop; pin Cargo.lock",
+      "depends_on": [
+        "MB-001"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Cargo check + dx serve logs for both"
+    },
+    {
+      "id": "MB-102",
+      "phase": "P0",
+      "title": "Refactor components/styles, responsive real one-pane mobile, icon library",
+      "depends_on": [
+        "MB-101"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Screenshot diff + a11y test for 5 screens"
+    },
+    {
+      "id": "MB-103",
+      "phase": "P0",
+      "title": "UI data adapter: fixture/web HTTPS/native core",
+      "depends_on": [
+        "MB-101"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "UI web reads API fixture; desktop reads native fixture; tests"
+    },
+    {
+      "id": "MB-104",
+      "phase": "P0",
+      "title": "Dioxus router stable deep links and navigation history",
+      "depends_on": [
+        "MB-102"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "`/inbox`, `/compose`, `/settings` reload tests"
+    },
+    {
+      "id": "MB-105",
+      "phase": "P0",
+      "title": "Add localization infrastructure VI/EN",
+      "depends_on": [
+        "MB-102"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Runtime locale switch and snapshot tests"
+    },
+    {
+      "id": "MB-110",
+      "phase": "P1",
+      "title": "Web authentication, session, CSRF, authorization guards",
+      "depends_on": [
+        "MB-103"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Unauthorized requests 401, owner tests"
+    },
+    {
+      "id": "MB-111",
+      "phase": "P1",
+      "title": "IMAP connect, TLS, auth error states",
+      "depends_on": [
+        "MB-113"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Real test provider connects with verified certificate"
+    },
+    {
+      "id": "MB-112",
+      "phase": "P1",
+      "title": "SMTP capability/identity test",
+      "depends_on": [
+        "MB-113"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Auth/TLS tests, no send without intent"
+    },
+    {
+      "id": "MB-113",
+      "phase": "P1",
+      "title": "Desktop OS keychain + Web AEAD vault",
+      "depends_on": [
+        "MB-110"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "No plaintext secret in data/log; rotation test"
+    },
+    {
+      "id": "MB-120",
+      "phase": "P1",
+      "title": "SQLite/Postgres repositories and migration harness",
+      "depends_on": [
+        "MB-103"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Both dialects same contract tests"
+    },
+    {
+      "id": "MB-121",
+      "phase": "P1",
+      "title": "Folder discovery, UIDVALIDITY cursor persistence",
+      "depends_on": [
+        "MB-111",
+        "MB-120"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Restart and epoch-change tests"
+    },
+    {
+      "id": "MB-122",
+      "phase": "P1",
+      "title": "Provider capability mapping and SPECIAL-USE",
+      "depends_on": [
+        "MB-121"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Dovecot + alternate provider tests"
+    },
+    {
+      "id": "MB-130",
+      "phase": "P2",
+      "title": "Pagination, body fetch, MIME parser",
+      "depends_on": [
+        "MB-121"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Unicode/multipart/huge MIME corpus tests"
+    },
+    {
+      "id": "MB-131",
+      "phase": "P2",
+      "title": "Secure HTML preview, attachment handling",
+      "depends_on": [
+        "MB-130"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "XSS isolation, remote image, path traversal tests"
+    },
+    {
+      "id": "MB-132",
+      "phase": "P2",
+      "title": "Read/unread/star and folder mutations",
+      "depends_on": [
+        "MB-121"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Cross-client state reconciliation tests"
+    },
+    {
+      "id": "MB-133",
+      "phase": "P2",
+      "title": "Local draft schema/repository",
+      "depends_on": [
+        "MB-120"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Survives restart, proper owner scoping"
+    },
+    {
+      "id": "MB-140",
+      "phase": "P2",
+      "title": "Sync worker IDLE/poll, retry, conflict handling",
+      "depends_on": [
+        "MB-121",
+        "MB-130"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Fault injection with disconnects, UID change"
+    },
+    {
+      "id": "MB-141",
+      "phase": "P2",
+      "title": "Status UI: partial error/offline/reconnect",
+      "depends_on": [
+        "MB-140"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Per-account status under outage"
+    },
+    {
+      "id": "MB-143",
+      "phase": "P2",
+      "title": "Sent/Drafts special folder mapping",
+      "depends_on": [
+        "MB-122"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Provider-specific mapping tests"
+    },
+    {
+      "id": "MB-144",
+      "phase": "P2",
+      "title": "Archive/trash/move/expunge",
+      "depends_on": [
+        "MB-132",
+        "MB-122"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Remote folder operations test"
+    },
+    {
+      "id": "MB-150",
+      "phase": "P2",
+      "title": "Composer, drafts, identity and MIME build",
+      "depends_on": [
+        "MB-133",
+        "MB-112",
+        "MB-131"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Sender account correct, BCC private, offline draft"
+    },
+    {
+      "id": "MB-151",
+      "phase": "P2",
+      "title": "SMTP submission state + Sent reconciliation",
+      "depends_on": [
+        "MB-150",
+        "MB-143"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Post-DATA disconnect unknown; no blind retry"
+    },
+    {
+      "id": "MB-200",
+      "phase": "P3",
+      "title": "Scalable unified inbox + scoped search",
+      "depends_on": [
+        "MB-140"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Pagination across providers, performance tests"
+    },
+    {
+      "id": "MB-201",
+      "phase": "P3",
+      "title": "Threading from Message-ID/References",
+      "depends_on": [
+        "MB-130"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "No unrelated thread merging"
+    },
+    {
+      "id": "MB-202",
+      "phase": "P3",
+      "title": "Provider autoconfig with SSRF-safe discovery",
+      "depends_on": [
+        "MB-111"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "DNS rebinding, fallback manual tests"
+    },
+    {
+      "id": "MB-203",
+      "phase": "P3",
+      "title": "OAuth2 major providers",
+      "depends_on": [
+        "MB-113",
+        "MB-202"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "PKCE, token refresh/revocation tests"
+    },
+    {
+      "id": "MB-210",
+      "phase": "P3",
+      "title": "Templates, signatures, shortcuts",
+      "depends_on": [
+        "MB-150"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "VI/EN and keyboard test"
+    },
+    {
+      "id": "MB-211",
+      "phase": "P3",
+      "title": "Desktop OS notifications",
+      "depends_on": [
+        "MB-141"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "No content displayed without opt-in"
+    },
+    {
+      "id": "MB-218",
+      "phase": "P3",
+      "title": "Scheduled send",
+      "depends_on": [
+        "MB-151"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Restart, cancel, timezone tests"
+    },
+    {
+      "id": "MB-221",
+      "phase": "P3",
+      "title": "Full i18n coverage",
+      "depends_on": [
+        "MB-105"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "All labels extracted and translated"
+    },
+    {
+      "id": "MB-300",
+      "phase": "P4",
+      "title": "Web hardened deployment / SSRF audit",
+      "depends_on": [
+        "MB-110",
+        "MB-202"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Pen test / threat model closed"
+    },
+    {
+      "id": "MB-301",
+      "phase": "P4",
+      "title": "Backups, restores, migrations",
+      "depends_on": [
+        "MB-120",
+        "MB-113"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Recovery drill documented"
+    },
+    {
+      "id": "MB-302",
+      "phase": "P4",
+      "title": "Desktop signing, update, sandbox config",
+      "depends_on": [
+        "MB-101",
+        "MB-211"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Signed installers macOS/Win/Linux"
+    },
+    {
+      "id": "MB-303",
+      "phase": "P4",
+      "title": "E2E CI 3 providers + OS targets",
+      "depends_on": [
+        "MB-151"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Green automated matrix"
+    },
+    {
+      "id": "MB-304",
+      "phase": "P4",
+      "title": "Security/PII/fuzz/load review",
+      "depends_on": [
+        "MB-303",
+        "MB-300"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "No critical findings + issue log"
+    },
+    {
+      "id": "MB-305",
+      "phase": "P4",
+      "title": "v1.0 tagged release & migration notes",
+      "depends_on": [
+        "MB-304"
+      ],
+      "status": "NOT STARTED",
+      "acceptance": "Release artifacts and complete ops docs"
+    }
+  ]
+}

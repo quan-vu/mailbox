@@ -1,0 +1,15 @@
+[package]
+name = "mailbox-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+mailbox-contracts = { path = "../mailbox-contracts" }
+thiserror.workspace = true
+# Diacritic folding for search (MB-200); already in the lock file through url/idna.
+unicode-normalization = "0.1"
+# Address parsing for links in mail (AUDIT S-09); already in the lock file through ammonia.
+url = "2"
+serde.workspace = true
+serde_json.workspace = true
